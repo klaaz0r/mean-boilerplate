@@ -1,0 +1,8 @@
+{
+    "production": {
+        "API_URL": "https://yourapiurl.com/api"
+    },
+    "development": {
+        "API_URL": "http://localhost:8080"
+    }
+}

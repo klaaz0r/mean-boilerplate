@@ -1,0 +1,74 @@
+<!doctype html>
+<!--
+|  |__   ____ |  | |  |   ____
+|  |  \_/ __ \|  | |  |  /  _ \
+|   Y  \  ___/|  |_|  |_(  <_> )
+|___|  /\___  >____/____/\____/
+     \/     \/
+                                            __
+______   ____ _____    ___________    _____/  |_
+\____ \_/ __ \\__  \  /  ___/\__  \  /    \   __\
+|  |_> >  ___/ / __ \_\___ \  / __ \|   |  \  |
+|   __/ \___  >____  /____  >(____  /___|  /__|
+|__|        \/     \/     \/      \/     \/
+
+dus je wil zien wat we doen?
+bekijk anders lekker de repo
+
+https://github.com/klaaz0r/storytime-frontend
+
+kun je misschien wat leren..
+ -->
+
+<!--start app (angular) -->
+<html ng-app="app">
+
+<head>
+  <title>Angular starter kit</title>
+  <meta charset="utf-8">
+  <base href="/">
+  <!-- android header theme -->
+  <meta name="theme-color" content="#2dafdf">
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!--bootstrap CDN for quick access-->
+  <!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css"> -->
+
+
+  <!-- custom css-->
+  <link rel="stylesheet" type="text/css" href="assets/css/main.css">
+
+  <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+</head>
+
+<body ng-controller="MainController">
+  <div id="main-container">
+    <!-- navbar directive -->
+    <navbar></navbar>
+
+    <!--view-->
+    <div id="main-content">
+      <main ui-view></main>
+    </div>
+
+    <!-- loading footer-->
+    <div id="footer">
+      <footer></footer>
+    </div>
+  </div>
+
+  <!-- vendor/cdn files-->
+  <script src="vendor/jquery/dist/jquery.min.js"></script>
+  <script src="vendor/angular/angular.min.js"></script>
+  <script src="vendor/angular-ui-router/release/angular-ui-router.min.js"></script>
+
+  <!-- angular index-->
+  <script type="text/javascript" src="app/app.js"></script>
+  <!-- custom js for design -->
+
+</body>
+
+</html>
