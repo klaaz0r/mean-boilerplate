@@ -1,12 +1,53 @@
 var express = require('express'),
-  userRouter = express.Router();
+    userRouter = express.Router();
+var User = require('../models/user');
 
-userRouter.use(function(req, res, next) {
-  res.json({
-    message: 'Hello Node'
-  });
+// we define the /api/user in the index js not here!
+userRouter.route('/')
+    //create a user
+    .post(function(req, res) {
+        var user = new User();
+        console.log(req.body);
+        user.name = req.body.name;
+        user.username = req.body.name;
+        user.password = req.body.password;
 
-});
+        console.log(req.body.name);
+        console.log(user);
+        user.save(function(err) {
+            if (err) {
+                if (err.code = 11000)
+                    return res.json({
+                        success: false,
+                        message: 'A user with that username already exists.'
+                    });
+                else
+                    return res.send(err);
+            }
+            res.json({
+                message: 'User created!'
+            });
 
+        })
+    })
+    //get all users excluding the hashed password of course.
+    .get(function(req, res) {
+        User.find(function(err, users) {
+            if (err) res.send(err);
+            res.json(users);
+        });
+    });
+
+//get a user by id
+userRouter.route('/:user_id')
+    .get(function(req, res) {
+        User.findById(req.params.user_id, function(err, user) {
+            if (err) res.send(err);
+            res.json(user);
+        });
+    })
+    .put(function(res,res){
+
+    })
 //export
 module.exports = userRouter;
