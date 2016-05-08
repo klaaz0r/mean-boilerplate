@@ -1,5 +1,6 @@
 var express = require('express'),
     userRouter = express.Router();
+//import user model
 var User = require('../models/user');
 
 // we define the /api/user in the index js not here!
@@ -46,8 +47,33 @@ userRouter.route('/:user_id')
             res.json(user);
         });
     })
-    .put(function(res,res){
-
+    .put(function(req, res) {
+        //find the user
+        User.findById(req.params.user_id, function(err, user) {
+            if (err) res.send(err);
+            //check what values are send to be updated
+            if (req.body.name) user.name = req.body.name;
+            if (req.body.username) user.username = req.body.username;
+            if (req.body.password) user.password = req.body.password;
+            //save the updated user object
+            user.save(function(err) {
+                if (err) res.send(err);
+                res.json({
+                    message: 'user updated!'
+                });
+            });
+        });
     })
+    //removing a user
+    .delete(function(req, res) {
+        User.remove({
+            _id: req.params.user_id
+        }, function(err, user) {
+            if (err) return res.send(err);
+            res.json({
+                message: 'Successfully deleted'
+            });
+        });
+    });
 //export
 module.exports = userRouter;

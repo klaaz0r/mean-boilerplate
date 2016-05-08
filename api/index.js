@@ -3,6 +3,6 @@ var express = require('express'),
 
 //import routes
 api.use('/user', require('./routes/user'));
-
+api.use('/authenticate', require('./routes/authenticate'));
 //export
 module.exports = api;
