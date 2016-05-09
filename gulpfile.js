@@ -14,6 +14,7 @@ var gulp = require('gulp'),
     iife = require("gulp-iife"),
     addStream = require('add-stream'),
     gulpNgConfig = require('gulp-ng-config');
+strip = require('gulp-strip-comments');
 
 //input files to work with, this keeps everything organised
 input = {
@@ -101,6 +102,7 @@ gulp.task('html', function() {
         .pipe(htmlmin({
             collapseWhitespace: true
         }))
+        .pipe(strip())
         .pipe(gulp.dest(output.root))
         .pipe(livereload());
 });
@@ -113,6 +115,7 @@ gulp.task('angular', function() {
         .pipe(process.env.NODE_ENV === 'production' ? addStream.obj(config('production')) : addStream.obj(config('development')))
         .pipe(concat('app.js'))
         .pipe(iife())
+        .pipe(strip())
         .pipe(gulp.dest(output.app))
         .pipe(livereload());
 });

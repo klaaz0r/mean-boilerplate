@@ -1,5 +1,5 @@
 var app = angular.module("app", ['ui.router', 'app.config', 'ngCookies', 'ngAnimate']);
-
+//test comment
 app.config(function($stateProvider, $urlRouterProvider, USER_ROLES) {
     $stateProvider
         .state('home', {
